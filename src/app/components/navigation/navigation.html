@@ -1,0 +1,98 @@
+<mat-sidenav-container class="h-screen bg-black">
+
+  <mat-sidenav
+  [mode]="isMobile() ? 'over' : 'side'"
+  opened
+  [style.width]="sideNavWidth()"
+  class="bg-black border-r border-black transition-all duration-200"
+>
+  <div class="flex flex-row w-full h-full" [class.px-3]="!collapsed()">
+    
+    <div 
+      class="flex flex-col pt-6 mb-4" 
+      [class]="collapsed() ? 'shrink items-center' : 'flex-1 w-full'"
+    >
+      
+      <div class="h-11 flex items-center" [class]="collapsed() ? 'justify-center' : 'justify-start px-1'">
+        <img
+          class="h-7 cursor-pointer"
+          src="/images/BleakAthleticAmericanmarten-size_restricted.gif"
+          routerLink="/home"
+        />
+      </div>
+
+      <div class="flex flex-col mt-4 gap-1 w-full">
+        @for (item of navItems; track item.label) {
+          <button
+            [routerLink]="item.route"
+            [matTooltip]="collapsed() ? item.label : ''"
+            class="h-11 text-gray-300 hover:bg-zinc-800 rounded-lg transition-all cursor-pointer flex items-center text-left select-none"
+            [class]="collapsed() ? 'w-11 justify-center' : 'w-full justify-start px-3 gap-3'"
+          >
+            <mat-icon class="shrink-0">{{ item.icon }}</mat-icon>
+            
+            @if (!collapsed()) {
+              <span class="text-sm font-medium tracking-wide whitespace-nowrap animate-fade-in text-gray-300">
+                {{ item.label }}
+              </span>
+            }
+          </button>
+        }
+      </div>
+
+      @if (collapsed()) {
+        <div class="mt-auto pb-4 flex flex-row w-full justify-center">
+          <button
+            (click)="toggleCollapse()"
+            matTooltip="Expand"
+            class="w-11 h-11 text-gray-300 hover:bg-zinc-800 rounded-lg transition-colors cursor-pointer flex items-center justify-center"
+          >
+            <mat-icon>keyboard_double_arrow_right</mat-icon>
+          </button>
+        </div>
+      }
+    </div>
+
+    @if (!collapsed()) {
+      <div class="pt-5 mb-4 ml-auto flex flex-row items-start">
+        <button
+          (click)="toggleCollapse()"
+          matTooltip="Expand"
+          class="w-11 h-11 text-gray-300 hover:bg-zinc-800 rounded-lg transition-colors cursor-pointer flex items-center justify-center"
+        >
+          <mat-icon>keyboard_double_arrow_left</mat-icon>
+        </button>
+      </div>
+    }
+  </div>
+</mat-sidenav>
+
+  <mat-sidenav-content class="flex flex-col h-screen">
+    <div class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-end px-4">
+      <button
+        mat-icon-button
+        class="animate-bounce"
+        [matMenuTriggerFor]="ships"
+        aria-label="Ships Menu"
+      >
+        <mat-icon>rocket</mat-icon>
+      </button>
+      <span class="mx-2 text-gray-400">|</span>
+      <button
+        disabled="true"
+        class="animate-ping"
+        mat-icon-button
+        [matMenuTriggerFor]="audioPlayer"
+        aria-label="Audio Player Menu"
+      >
+        <mat-icon>headphones</mat-icon>
+      </button>
+      <mat-menu #ships="matMenu">
+        <app-space-ships [isDropDown]="true"></app-space-ships>
+      </mat-menu>
+      <mat-menu #audioPlayer="matMenu"></mat-menu>
+    </div>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

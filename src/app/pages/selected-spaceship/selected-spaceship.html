@@ -1,0 +1,65 @@
+@if (selectedSpaceShip(); as ship) {
+  <div 
+    [style.background-image]="'url(' + ship.backgroundImage + ')'"
+    class="relative min-h-screen w-full bg-cover bg-center text-white flex flex-col justify-between p-6 md:p-12 select-none overflow-hidden"
+  >
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px] pointer-events-none"></div>
+
+    <div class="relative z-10 mt-10 flex flex-col md:flex-row justify-between items-start gap-8 w-full max-w-7xl mx-auto">
+      <div class="max-w-md space-y-2 ">
+        <h1 class="text-4xl md:text-5xl font-light tracking-wider uppercase text-zinc-100 drop-shadow-md">
+          {{ ship.title }}
+        </h1>
+        <p class="text-sm font-bold tracking-widest text-elite-orange uppercase border-b border-amber-500/20 pb-2">
+          {{ ship.header }}
+        </p>
+        <p class="text-lg text-zinc-300 leading-relaxed pt-2 drop-shadow">
+          {{ ship.description }}
+        </p>
+      </div>
+
+      <div 
+        (click)="openLightbox([ship.schematic], 0)" 
+        class="group relative w-80 aspect-video bg-blue-950/20 border border-blue-500/30 p-1 rounded backdrop-blur-sm cursor-pointer hover:border-blue-400/70 hover:bg-blue-950/40 transition-all duration-300 shadow-xl"
+      >
+        <div class="absolute top-2 right-2 z-20 bg-elite-orange text-sm text-black font-extrabold px-1.5 py-0.5 rounded tracking-wider uppercase opacity-80 group-hover:opacity-100">
+          Schematic
+        </div>
+        <img [src]="ship.schematic" class="w-full h-full object-cover mix-blend-screen opacity-60 group-hover:opacity-85 transition-opacity" alt="Tactical Schematic Layout" />
+      </div>
+    </div>
+
+    <div class="relative z-10 flex flex-col md:flex-row justify-between items-end gap-6 w-full max-w-7xl mx-auto mt-auto">
+      
+      <div class="w-full md:w-7/12 bg-zinc-950/50 border border-zinc-800/80 p-4 rounded backdrop-blur-md shadow-2xl">
+        <span class="text-sm font-bold tracking-widest text-zinc-400 uppercase block mb-3">
+          Screenshots
+        </span>
+        
+        <div class="flex flex-row gap-3 overflow-x-auto overflow-y-hidden pb-2 scrollbar-thin snap-x snap-mandatory">
+          @for (img of ship.screenShots; track $index) {
+            <div 
+              (click)="openLightbox(ship.screenShots, $index)"
+              class="relative shrink-0 w-40 aspect-video rounded overflow-hidden cursor-pointer border border-transparent hover:border-amber-500/80 transition-colors snap-start"
+            >
+              <img [src]="img" class="w-full h-full object-cover pointer-events-none" alt="System Screen Frame Capture" />
+            </div>
+          }
+        </div>
+      </div>
+
+      @if (ship.videoUrl) {
+        <div class="w-72 aspect-video bg-black/70 border border-red-900/30 rounded overflow-hidden shadow-2xl hidden sm:block">
+          <video class="w-full h-full object-cover opacity-50 mix-blend-screen" [muted]="true" loop autoplay playsinline>
+            <source [src]="ship.videoUrl" type="video/mp4" />
+          </video>
+        </div>
+      }
+    </div>
+
+    <app-lightbox 
+      [images]="lightboxImages()" 
+      [(activeIndex)]="activeImageIndex" 
+    />
+  </div>
+}
