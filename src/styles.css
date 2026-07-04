@@ -2,8 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import "tailwindcss" important;
-
+@import 'tailwindcss' important;
 
 @theme {
   --color-elite-orange: #b4956d;
@@ -23,17 +22,7 @@ body {
 .wallpaper-factions,
 .wallpaper-aliens,
 .wallpaper-ship-models,
-.wallpaper-commerce,
-.wallpaper-fer-de-lance,
-.wallpaper-anaconda,
-.wallpaper-asp-explorer,
-.wallpaper-python,
-.wallpaper-sidewinder,
-.wallpaper-krait-phantom,
-.wallpaper-clipper,
-.wallpaper-dolphin,
-.wallpaper-type-9,
-.wallpaper-imperial-eagle {
+.wallpaper-commerce {
   position: relative;
   background-position: center;
   background-repeat: no-repeat;
@@ -42,86 +31,34 @@ body {
 }
 
 .wallpaper-home {
-  background-image: url("../public/images/wallpaper.jpg");
+  background-image: url('../public/images/wallpaper.jpg');
 }
 
 .wallpaper-home-alt {
-  background-image: url("../public/images/wallpaper-factions-alt.jpg");
+  background-image: url('../public/images/wallpaper-factions-alt.jpg');
 }
 
 .wallpaper-ships {
-  background-image: url("../public/images/wallpaper-ships-new.jpg");
+  background-image: url('../public/images/wallpaper-ships-new.jpg');
 }
 
 .wallpaper-exploration {
-  background-image: url("../public/images/wallpaper-exploration.jpg");
+  background-image: url('../public/images/wallpaper-exploration.jpg');
 }
 
 .wallpaper-factions {
-  background-image: url("../public/images/wallpaper-factions.jpg");
+  background-image: url('../public/images/wallpaper-factions.jpg');
 }
 
 .wallpaper-aliens {
-  background-image: url("../public/images/wallpaper-aliens.jpg");
+  background-image: url('../public/images/wallpaper-aliens.jpg');
 }
 
 .wallpaper-commerce {
-  background-image: url("../public/images/wallpaper-commerce.jpg");
-}
-
-
-/* ---------------------------------------  Ship Model Wallpaper Classes ---------------------------------------------- */
-
-.wallpaper-fer-de-lance {
-  background-image: url("../public/images/ships/backgrounds/background-fer-de-lance.jpg");
-}
-
-
-.wallpaper-anaconda {
-  background-image: url("../public/images/ships/hero/anaconda.jpg");
-}
-
-
-.wallpaper-asp-explorer {
-  background-image: url("../public/images/ships/backgrounds/background-asp-explorer.jpg");
-}
-
-
-.wallpaper-python {
-  background-image: url("../public/images/ships/backgrounds/background-python.jpg");
-}
-
-
-.wallpaper-sidewinder {
-  background-image: url("../public/images/ships/backgrounds/background-sidewinder.jpg");
-}
-
-
-.wallpaper-krait-phantom {
-  background-image: url("../public/images/ships/backgrounds/background-krait-phantom.jpg");
-}
-
-.wallpaper-clipper {
-  background-image: url("../public/images/ships/backgrounds/background-clipper.jpg");
-}
-
-
-.wallpaper-dolphin {
-  background-image: url("../public/images/ships/backgrounds/background-dolphin.jpg");
-}
-
-
-.wallpaper-type-9 {
-  background-image: url("../public/images/ships/backgrounds/background-type9.jpg");
-}
-
-.wallpaper-imperial-eagle {
-  background-image: url("../public/images/ships/backgrounds/background-imperial-eagle.jpg");
+  background-image: url('../public/images/wallpaper-commerce.jpg');
 }
 
 /* --------------------------------------------------  *** ----------------------------------------- */
-
-
 
 .row {
   display: flex;
@@ -150,7 +87,6 @@ body {
   /*vertical*/
 }
 
-
 .flex-item {
   flex: 1;
   padding: 5px;
@@ -165,8 +101,6 @@ body {
 .example-spacer {
   flex: 1 1 auto;
 }
-
-
 
 /* ---------------------------------- material overrides --------------------------------------- */
 /* .mat-select-content {
@@ -224,14 +158,13 @@ body {
   background-color: #f07b05 !important;
 } */
 
-
 .cdk-overlay-container .cdk-overlay-pane .mat-menu-panel .ships-panel {
   /* min-width: 112px !important;
   max-width: 400px !important;
   height: 210px !important; */
   width: 165px !important;
   background-color: #333333 !important;
-  opacity: .85 !important;
+  opacity: 0.85 !important;
   color: #f07b05 !important;
   top: 14px !important;
   /* display: inline-block; */
@@ -248,7 +181,6 @@ body {
   color: black !important;
   background: #f07b05 !important;
 }
-
 
 .mat-expansion-panel-body {
   padding: 28px 24px 16px !important;
@@ -325,7 +257,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #BD9016;
+  color: #bd9016;
 }
 
 @keyframes glow {
