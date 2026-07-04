@@ -48,7 +48,7 @@ jobs:
 
       - name: Smoke test
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://elite-giolla.web.app/home")
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://elite-giolla.web.app/")
           echo "Smoke test status: $STATUS"
           if [ "$STATUS" != "200" ]; then
             echo "Smoke test failed"
