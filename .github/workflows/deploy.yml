@@ -5,6 +5,10 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Tag to deploy (e.g. v1.0.0)'
+        required: true
 
 permissions:
   contents: read
@@ -15,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.version || github.ref_name }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

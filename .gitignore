@@ -43,3 +43,9 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Secrets — never commit service account keys
+*-firebase-adminsdk-*.json
+serviceAccountKey.json
+*.serviceaccount.json
+gcp-key.json
