@@ -8,7 +8,8 @@ on:
     inputs:
       version:
         description: 'Tag to deploy (e.g. v1.0.0)'
-        required: true
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -20,7 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.version || github.ref_name }}
+          ref: ${{ inputs.version || github.ref_name }}
+
+      - name: Validate tag
+        if: github.event_name == 'workflow_dispatch' && inputs.version != ''
+        run: |
+          git ls-remote --exit-code --tags origin "refs/tags/${{ inputs.version }}" \
+            || { echo "Tag ${{ inputs.version }} not found"; exit 1; }
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
