@@ -25,6 +25,6 @@ describe('SpaceShips', () => {
   });
 
   it('should expose the ships signal from the store', () => {
-    expect(component.ships()).toEqual([]);
+    expect(component.ships.value()).toEqual([]);
   });
 });
