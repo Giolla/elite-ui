@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 
 import { Navigation } from './navigation';
+import { ApiService } from '../../services/api.service';
 
 describe('Navigation', () => {
   let component: Navigation;
@@ -12,7 +12,10 @@ describe('Navigation', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Navigation],
-      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
+      providers: [
+        provideRouter([]),
+        { provide: ApiService, useValue: { getShips: () => of([]) } },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Navigation);

@@ -39,7 +39,7 @@ export class Navigation {
     afterNextRender(() => {
       this._mobileQuery = this.media.matchMedia('(max-width: 600px)');
       this.isMobile.set(this._mobileQuery.matches);
-      this._mobileQuery.addEventListener('change', (e) => this.isMobile.set(e.matches));
+      this._mobileQuery.addEventListener?.('change', (e) => this.isMobile.set(e.matches));
     });
   }
 
