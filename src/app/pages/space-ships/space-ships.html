@@ -1,7 +1,7 @@
 @if (!isDropDown()) {
   <div class="wallpaper-ships min-h-screen w-full">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 w-full">
-      @for (item of ships(); track $index) {
+      @for (item of ships.value(); track $index) {
         <div
           [routerLink]="['/selected-space-ship', item.id]"
           class="group relative aspect-2/1 w-full overflow-hidden cursor-pointer"
@@ -28,7 +28,7 @@
   </div>
 } @else {
   <div class="ships-panel">
-    @for (item of ships(); track $index) {
+    @for (item of ships.value(); track $index) {
       <a
         mat-menu-item
         [routerLink]="['/selected-space-ship', item.id]"

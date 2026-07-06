@@ -42,7 +42,7 @@
               (click)="openLightbox(ship.screenShots, $index)"
               class="relative shrink-0 w-40 aspect-video rounded overflow-hidden cursor-pointer border border-transparent hover:border-amber-500/80 transition-colors snap-start"
             >
-              <img [src]="img" class="w-full h-full object-cover pointer-events-none" alt="System Screen Frame Capture" />
+              <img [ngSrc]="img" fill class=" object-cover pointer-events-none" alt="System Screen Frame Capture" />
             </div>
           }
         </div>
